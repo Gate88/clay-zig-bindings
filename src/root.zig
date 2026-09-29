@@ -821,6 +821,15 @@ pub inline fn UI() fn (config: ElementDeclaration) callconv(.@"inline") fn (void
     return local.configureOpenElement;
 }
 
+pub inline fn Open(config: ElementDeclaration) void {
+    cdefs.Clay__OpenElement();
+    cdefs.Clay__ConfigureOpenElement(config);
+}
+
+pub inline fn Close() void {
+    cdefs.Clay__CloseElement();
+}
+
 /// Returns layout data for an element with the given ID
 /// The returned data includes the element's position and size
 /// The 'found' field indicates if an element with that ID exists
