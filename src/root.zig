@@ -457,6 +457,14 @@ pub const ElementId = extern struct {
     /// The string ID to hash
     string_id: String,
 
+    pub fn childID(self: *const ElementId, string: []const u8) ElementId {
+        return cdefs.Clay__HashString(.fromSlice(string), 0, self.id);
+    }
+
+    pub fn childIDI(self: *const ElementId, string: []const u8, index: u32) ElementId {
+        return cdefs.Clay__HashString(.fromSlice(string), index, self.id);
+    }
+
     /// Creates a global element ID from a string
     pub fn ID(string: []const u8) ElementId {
         return cdefs.Clay__HashString(.fromSlice(string), 0, 0); // TODO move hashing to zig side for performance (?)
