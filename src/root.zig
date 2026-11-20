@@ -85,6 +85,10 @@ pub const String = extern struct {
             .length = @intCast(string.len),
         };
     }
+
+    pub fn toSlice(self: *const String) []const u8 {
+        return self.chars[0..@intCast(self.length)];
+    }
 };
 
 /// Clay StringSlice is used to represent non-owning string slices
